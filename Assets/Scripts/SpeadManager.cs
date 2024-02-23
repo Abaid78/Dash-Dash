@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class SpeadManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    public float speed = 0.1f;
+    public float increaseSpeed = 0.001f;
     // Update is called once per frame
     void Update()
     {
-        
+        speed += increaseSpeed * Time.deltaTime;
+        transform.Translate(Vector2.left * speed);
     }
 }

@@ -1,0 +1,21 @@
+Aspect ratio is a term used to describe the proportional relationship between the width and height of an image, screen, or display. It is commonly expressed as a ratio of width to height. Aspect ratio is essential because it determines how an image or display appears visually, affecting its overall shape and proportions.
+
+Aspect ratio is typically represented as two numbers separated by a colon (e.g., 16:9), where the first number represents the width and the second number represents the height.
+
+ For example:
+
+An aspect ratio of 4:3 means that for every 4 units of width, there are 3 units of height.
+An aspect ratio of 16:9 means that for every 16 units of width, there are 9 units of height.
+
+To calculate aspect ratio, you can use the following formula:
+
+Aspect Ratio= Height/Width
+
+For example, if you have an image that is 1920 pixels wide and 1080 pixels high (commonly known as Full HD resolution), you can calculate the aspect ratio as follows:
+
+Aspect Ratio= 1080/1920   =1.7778
+
+Aspect ratio is crucial for ensuring that images and graphics display correctly on various devices and screens without distortion or stretching
+​
+
+​

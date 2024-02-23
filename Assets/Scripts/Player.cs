@@ -10,10 +10,9 @@ public class Player : MonoBehaviour
     public bool isGrounded = false;
     public int extraJumps = 1;
     public int maxExtraJumps = 1;
-    private void Start()
-    {
-       
-    }
+    public UIManager uiManager;
+    public int coins;
+
     void Update()
     {
         if (isGrounded || extraJumps > 0)
@@ -25,6 +24,11 @@ public class Player : MonoBehaviour
                 extraJumps--;
             }
         }
+        //Quit the Application
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -33,6 +37,16 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
             extraJumps = maxExtraJumps;
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            coins += 1;
+            uiManager.CoinCountUpdateUI(coins);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Obstrical"))
+        {
+           
         }
     }
 
