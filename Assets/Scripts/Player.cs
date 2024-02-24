@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public int maxExtraJumps = 1;
     public UIManager uiManager;
     public int coins;
-
+    public Animator animator;
     void Update()
     {
         if (isGrounded || extraJumps > 0)
@@ -20,8 +20,10 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = Vector2.up * jumpForce;
+                animator.SetBool("Jump",true);
                 isGrounded = false;
                 extraJumps--;
+
             }
         }
         //Quit the Application
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            animator.SetBool("Jump", false);
             extraJumps = maxExtraJumps;
         }
         if (collision.gameObject.CompareTag("Coin"))
