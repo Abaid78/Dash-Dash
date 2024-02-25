@@ -11,6 +11,6 @@ public class MoveScript : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(Vector2.left * speadManager.speed);
+        transform.Translate(Vector2.left * speadManager.speed*Time.deltaTime);
     }
 }

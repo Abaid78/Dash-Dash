@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public UIManager uiManager;
     public int coins;
     public Animator animator;
+    public AudioSource audioSource; int temp = 5;
     void Update()
     {
         if (isGrounded || extraJumps > 0)
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         {
             Application.Quit();
         }
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -44,6 +46,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             coins += 1;
+            
+            if (coins >= temp)
+            {
+                temp = temp + 5;
+                Debug.Log("YUOUUU: "+ temp);
+            }
+            audioSource.Play();
             uiManager.CoinCountUpdateUI(coins);
             Destroy(collision.gameObject);
         }

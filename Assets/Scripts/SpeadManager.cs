@@ -10,6 +10,5 @@ public class SpeadManager : MonoBehaviour
     void Update()
     {
         speed += increaseSpeed * Time.deltaTime;
-        transform.Translate(Vector2.left * speed);
     }
 }
