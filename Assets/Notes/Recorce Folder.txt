@@ -1,0 +1,5 @@
+If you didn't have a "Resources" folder before and you're trying to use Resources.Load<Sprite>("Flags/pakistan"), Unity won't be able to find the sprite because it expects the asset to be located within a "Resources" folder in order to use Resources.Load.
+
+The "Resources" folder in Unity is a special folder that Unity recognizes for assets that you want to load at runtime using Resources.Load. Assets placed directly within the "Resources" folder or in subfolders of "Resources" can be loaded using Resources.Load without needing to specify the full path.
+
+If you didn't have a "Resources" folder before and you need to load assets at runtime, you'll need to create one. You can do this by simply creating a folder named "Resources" directly under the "Assets" folder in your Unity project. Then, move the "Flags" folder (containing your sprite assets) into the "Resources" folder. After that, you can use Resources.Load<Sprite>("Flags/pakistan") as intended.

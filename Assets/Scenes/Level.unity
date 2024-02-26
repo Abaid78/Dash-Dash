@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 62728028}
   - component: {fileID: 62728030}
   - component: {fileID: 62728029}
+  - component: {fileID: 62728031}
   m_Layer: 5
   m_Name: flag
   m_TagString: Untagged
@@ -379,6 +380,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62728027}
   m_CullTransparentMesh: 0
+--- !u!114 &62728031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62728027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9135e591209fd344db4cf8c78d46d1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagImage: {fileID: 62728029}
+  countryName: pakistan
 --- !u!1 &107027272
 GameObject:
   m_ObjectHideFlags: 0
