@@ -1,41 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     public float jumpForce = 10f;
     public Rigidbody2D rb;
     public bool isGrounded = false;
     public int extraJumps = 1;
     public int maxExtraJumps = 1;
+    public int threshold = 100;
     public UIManager uiManager;
-    public int coins;
+    private int coins;
     public Animator animator;
-    public AudioSource audioSource; int temp = 5;
-    void Update()
+    public AudioSource audioSource;
+
+    private void Update()
     {
         if (isGrounded || extraJumps > 0)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.velocity = Vector2.up * jumpForce;
-                animator.SetBool("Jump",true);
+                animator.SetBool("Jump", true);
                 isGrounded = false;
                 extraJumps--;
-
             }
         }
-        //Quit the Application
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-        
+       
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -45,21 +38,39 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Coin"))
         {
-            coins += 1;
-            
-            if (coins >= temp)
-            {
-                temp = temp + 5;
-                Debug.Log("YUOUUU: "+ temp);
-            }
+            IncreaseAndSaveCoins();
             audioSource.Play();
             uiManager.CoinCountUpdateUI(coins);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Obstrical"))
         {
-           
         }
     }
+    void IncreaseAndSaveCoins()
+    {
+        coins += 1;
 
+        // Load the previously saved number of coins
+        int savedCoins = SaveData.GetCoins();
+
+        // If coins are greater than the saved coins, update and save them
+        if (coins > savedCoins)
+        {
+            SaveData.SaveCoins(coins);
+        }
+
+        // Check the coins threshold
+        CheckCoinsThreshold(coins, threshold);
+    }
+
+  void CheckCoinsThreshold(int coins, int threshold)
+    {
+        // Check if the coins reached a multiple of the threshold
+        if (coins % threshold == 0)
+        {
+            // Perform the action
+            Debug.Log("Performing action after every " + threshold + " coins: " + coins);
+        }
+    }
 }

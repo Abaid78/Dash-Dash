@@ -1,29 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Text.RegularExpressions;
-
-public class FlagDisplay : MonoBehaviour
+public class DisplayUserInputs : MonoBehaviour
 {
     public Image flagImage;
-    public string countryName; 
-    private readonly string flagsFolderPath = "Flags/"; // Folder path where flag sprites are stored
+    public Text playerNameText;
+    private readonly string flagsFolderPath = "Flags/";
 
     private void Start()
     {
-        string cleanedCountryName = CleanseString(countryName);
-        
         // Load the flag sprite based on the cleaned country name
-        LoadFlag(cleanedCountryName);
+        LoadFlag(SaveData.GetUserCountry());
+        LoadUserName(SaveData.GetUserName());
     }
 
-    // Method to remove spaces and symbols from a string
-    string CleanseString(string inputString)
+    void LoadUserName(string name)
     {
-        return Regex.Replace(inputString, @"\s+|[^a-zA-Z0-9]", "");
+        playerNameText.text = name;
     }
 
     // Method to load the flag sprite based on the entered country name
-    public void LoadFlag(string countryName)
+    void LoadFlag(string countryName)
     {
         // Load the flag sprite based on the country name
         Sprite flagSprite = Resources.Load<Sprite>(flagsFolderPath + countryName);

@@ -1,0 +1,20 @@
+Static Method: When a method is declared as static, it means it belongs to the class itself, rather than to instances of the class. In practical terms, this means you can call the method directly using the class name, without needing to create an instance of the class. For example, you can call SaveUserName("John") directly without needing to instantiate the class that contains this method.
+
+In summary, using a static method to save user data to PlayerPrefs is a reasonable approach for simple applications, but keep in mind the limitations and security considerations of PlayerPrefs for storing sensitive information.
+
+Is need to attach any ojbect?
+if using static keyword in script then, This script doesn't need to be attached to any GameObject; it can be attached or placed in any scene, and its methods can be called as needed.
+
+
+Why not Need to attached that to gameObject?
+However, not all scripts need to be attached to GameObjects. Utility scripts, like the SaveData class you provided, often don't need to be attached to any specific GameObject. These types of scripts are used for tasks that are not directly related to scene objects, such as saving data, managing game state, or performing calculations.
+
+Utility Purpose: The SaveData class serves a utility purpose—it's used for data management and doesn't directly interact with GameObjects in the scene. Scripts like these are commonly kept separate from GameObjects and are used wherever needed without being attached to any specific GameObject.
+
+Global Accessibility: Since the methods in SaveData are static, they can be accessed from any script in your project without needing to reference a specific instance. This makes it convenient for saving data from various parts of your game without having to manage instances of the SaveData class.
+
+Overall, attaching a script to a GameObject is useful when you need its functions to be automatically called by Unity's runtime system. However, for scripts that serve utility purposes or don't require interaction with GameObjects, it's common practice to keep them separate and not attach them to any GameObject.
+
+
+
+
