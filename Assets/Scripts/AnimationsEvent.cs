@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
+﻿using UnityEngine;
 
 public class AnimationsEvent : MonoBehaviour
 {
@@ -9,9 +6,10 @@ public class AnimationsEvent : MonoBehaviour
     public void DisableObject()
     {
         gameObject.SetActive(false);
-    }public void EnableObject()
+    }
+
+    public void EnableObject()
     {
         gameObject.SetActive(true);
     }
-  
 }

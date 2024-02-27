@@ -11,6 +11,6 @@ public class Obstricles: MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(Vector2.left * speadManager.speed*Time.deltaTime);
+        transform.Translate(Vector2.left * speadManager.speed *Time.deltaTime);
     }
 }

@@ -1,71 +1,97 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject playersDashBord;
-    public Animator dashBordAnimator;
-    public GameObject manueButtonsPanel;
-    public Button dashBordButton;
+    public GameObject playersDashBoard;
+    public Animator dashBoardAnimator;
+    public GameObject quitPanel;
+    public GameObject userInputPanel;
+    public Button dashBoardButton;
+    public Button showQuitPanelButton;
     public Button pauseButton;
-    public Text pauseBtnText;
+    public Text pauseButtonText;
     public Text coinsText;
-    
-    public void CoinCountUpdateUI(int coins)
+
+    private void Start()
+    {
+        InitializeUI();
+    }
+
+    private void InitializeUI()
+    {
+        playersDashBoard.SetActive(false);
+        quitPanel.SetActive(false);
+        ToggleButtonInteractability(dashBoardButton, false);
+        ToggleButtonInteractability(showQuitPanelButton, false);
+        
+    }
+
+    // Update UI when game is paused or resumed
+    public void UpdatePauseUI(string buttonText, bool interactable)
+    {
+        pauseButtonText.text = buttonText;
+        ToggleButtonInteractability(dashBoardButton, interactable);
+        ToggleButtonInteractability(showQuitPanelButton, interactable);
+    }
+
+    // Toggle interactability of a button
+    private void ToggleButtonInteractability(Button button, bool interactable)
+    {
+        if (button != null)
+        {
+            button.interactable = interactable;
+        }
+    }
+
+    // Show the quit panel
+    public void ShowQuitPanel()
+    {
+        quitPanel.SetActive(true);
+        ToggleButtonInteractability(dashBoardButton, false);
+        ToggleButtonInteractability(pauseButton, false);
+    }
+
+    // Hide the quit panel
+    public void HideQuitPanel()
+    {
+        quitPanel.SetActive(false);
+        ToggleButtonInteractability(dashBoardButton, true);
+        ToggleButtonInteractability(pauseButton, true);
+    }
+
+    // Update the coin count displayed in the UI
+    public void UpdateCoinCountUI(int coins)
     {
         coinsText.text = coins.ToString();
     }
 
-    private void Start()
+    // Open the player's dashboard
+    public void OpenPlayersDashboard()
     {
-        playersDashBord.SetActive(false);
-        HideAndShowDashBordButton(false);
+        playersDashBoard.SetActive(true);
+        ToggleButtonInteractability(pauseButton, false);
+        ToggleButtonInteractability(showQuitPanelButton, false);
     }
 
-    public void ClosePlayersDashBord()
+    // Close the player's dashboard
+    public void ClosePlayersDashboard()
     {
-        dashBordAnimator.SetTrigger("CloseDashBord");
-        pauseButton.interactable = true;
+        dashBoardAnimator.SetTrigger("CloseDashboard");
+        ToggleButtonInteractability(pauseButton, true);
+        ToggleButtonInteractability(showQuitPanelButton, true);
     }
 
-    public void OpenPlayersDashBord()
+    public void DisplayUserInputs(bool isDisplay)
     {
-        playersDashBord.SetActive(true);
-        pauseButton.interactable = false;
-        
-    }
-
-    public void ManageUIOnPause(string text, bool isHideDashBordButton)
-    {
-        pauseButton.interactable = true;
-        pauseBtnText.text = text;
-        HideAndShowDashBordButton(isHideDashBordButton);
-    }
-
-    public void HideAndShowDashBordButton(bool isHide)
-    {
-        if (isHide)
+        if (isDisplay)
         {
-            dashBordButton.gameObject.SetActive(true);
+           
+            userInputPanel.SetActive(true);
         }
         else
         {
-            dashBordButton.gameObject.SetActive(false);
+            userInputPanel.SetActive(false);
         }
-    }
-
-    //show these buttuns are placed to the corner of screen
-    public void ShowManuButtonsPanel()
-    {
-        manueButtonsPanel.SetActive(true);
-        //Auto disable after some Time
-        StartCoroutine(DisableAfterDelay(manueButtonsPanel, 3f));
-    }
-
-    private IEnumerator DisableAfterDelay(GameObject panelObject, float time)
-    {
-        yield return new WaitForSeconds(time);
-        panelObject.SetActive(false);
     }
 }

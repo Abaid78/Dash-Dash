@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         {
             IncreaseAndSaveCoins();
             audioSource.Play();
-            uiManager.CoinCountUpdateUI(coins);
+            uiManager.UpdateCoinCountUI(coins);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Obstrical"))

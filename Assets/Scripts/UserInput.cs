@@ -8,12 +8,21 @@ public class UserInput : MonoBehaviour
 {
     public InputField nameInputField;
     public InputField countryInputField;
+    public UIManager uiManager;
+    public GameManager gameManager;
   public void SaveUserInputData()
     {
-        string name = CleanseString(nameInputField.text);
-        string country = CleanseString(countryInputField.text);
-        SaveData.SaveUserName(name);
-        SaveData.SaveUserCountry(country);
+        if(nameInputField.text!="" && countryInputField.text != "")
+        {
+            string name = nameInputField.text;
+            string country = CleanseString(countryInputField.text);
+            SaveData.SaveUserName(name);
+            SaveData.SaveUserCountry(country);
+            SaveData.MarkDataAsEntered();
+            uiManager.DisplayUserInputs(false);
+            gameManager.StartGame();
+        }
+       
     }
     string CleanseString(string inputString)
     {
