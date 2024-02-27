@@ -5,12 +5,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject playersDashBord;
+    public Animator dashBordAnimator;
     public GameObject manueButtonsPanel;
     public Button dashBordButton;
     public Button pauseButton;
     public Text pauseBtnText;
     public Text coinsText;
-
+    
     public void CoinCountUpdateUI(int coins)
     {
         coinsText.text = coins.ToString();
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void ClosePlayersDashBord()
     {
-        playersDashBord.SetActive(false);
+        dashBordAnimator.SetTrigger("CloseDashBord");
         pauseButton.interactable = true;
     }
 
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
     {
         playersDashBord.SetActive(true);
         pauseButton.interactable = false;
+        
     }
 
     public void ManageUIOnPause(string text, bool isHideDashBordButton)

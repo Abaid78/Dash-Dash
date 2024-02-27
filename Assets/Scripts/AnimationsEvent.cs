@@ -6,12 +6,12 @@ using System.IO;
 public class AnimationsEvent : MonoBehaviour
 {
     // This C# function can be called by an Animation Event
-    public void DisableThisObject()
+    public void DisableObject()
     {
-        Debug.Log("Disable Object");
-    }
-    private void Start()
+        gameObject.SetActive(false);
+    }public void EnableObject()
     {
-        
+        gameObject.SetActive(true);
     }
+  
 }

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
+
         //Quit the Application
         if (Input.GetKeyDown(KeyCode.Escape))
         {
