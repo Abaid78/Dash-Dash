@@ -25,7 +25,7 @@ public class GradeManager : MonoBehaviour
         for (int i = 0; i < playerScores.Count; i++)
         {
             // Update the text of each player's score display
-            scoreTexts[i].text = "Player " + (i + 1) + ": " + playerScores[i].ToString();
+            scoreTexts[i].text = playerScores[i].ToString();
         }
     }
 
@@ -43,14 +43,19 @@ public class GradeManager : MonoBehaviour
         {
             // Find the index of the player with the current score in the original list
             int currentIndex = playerScores.IndexOf(sortedScores[i]);
-            if (currentIndex != i)
-            {
-                // Swap the positions of the corresponding RectTransforms
-                SwapPositions(playerTransforms[currentIndex], playerTransforms[i]);
-                // Update the playerTransforms list to reflect the new positions
-                playerTransforms[currentIndex] = playerTransforms[i];
-                playerTransforms[i] = playerTransforms[currentIndex];
-            }
+
+            // Swap the positions of the corresponding RectTransforms
+            SwapPositions(playerTransforms[currentIndex], playerTransforms[i]);
+
+            // Swap the scores in the playerScores list to reflect the new order
+            int tempScore = playerScores[currentIndex];
+            playerScores[currentIndex] = playerScores[i];
+            playerScores[i] = tempScore;
+
+            // Update the playerTransforms list to reflect the new positions
+            RectTransform tempTransform = playerTransforms[currentIndex];
+            playerTransforms[currentIndex] = playerTransforms[i];
+            playerTransforms[i] = tempTransform;
         }
     }
 
