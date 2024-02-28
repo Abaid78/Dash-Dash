@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5973114954868900831}
   - component: {fileID: 5973114954868900824}
-  - component: {fileID: 5973114954868900830}
   - component: {fileID: 5973114954868900829}
+  - component: {fileID: 66195696}
   m_Layer: 0
   m_Name: Mace3
-  m_TagString: Untagged
+  m_TagString: Obstrical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5973114954868900825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.83, z: -0.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -2.7, z: -0.19}
+  m_LocalScale: {x: 1.2, y: 2, z: 1}
   m_Children:
   - {fileID: 8106611107186532959}
   m_Father: {fileID: 0}
@@ -84,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5973114954868900830
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5973114954868900825}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.03516352}
-  serializedVersion: 2
-  m_Radius: 0.55404127
 --- !u!114 &5973114954868900829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +97,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speadManager: {fileID: 0}
+--- !u!70 &66195696
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5973114954868900825}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035400093, y: 0.069030285}
+  m_Size: {x: 1.0243983, y: 1.0045781}
+  m_Direction: 0
 --- !u!1001 &5973114956624781866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,12 +133,12 @@ PrefabInstance:
     - target: {fileID: 2478303323722580085, guid: c4af5c42a7b186646abddfa6ab1e745a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2478303323722580085, guid: c4af5c42a7b186646abddfa6ab1e745a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2478303323722580085, guid: c4af5c42a7b186646abddfa6ab1e745a,
         type: 3}

@@ -13,13 +13,17 @@ public class RespawnObstricles : MonoBehaviour
         int range = Random.Range(0, prefabs.Length);// 0 is include
 
         Instantiate(prefabs[range], geratepoint.position, Quaternion.identity);
-        //Debug.Log(prefabs[range].name + " range: " + range);
+        Debug.Log(prefabs[range].name + " range: " + range);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Obstrical"))
+        {
+            Genrate();
+        }
         //float range = Random.Range(0f, 5f);
         //Invoke("Genrate", range);
-        Genrate();
+ ;
     }
 }
