@@ -36,15 +36,19 @@ public class Player : MonoBehaviour
             animator.SetBool("Jump", false);
             extraJumps = maxExtraJumps;
         }
+       
+        if (collision.gameObject.CompareTag("Obstrical"))
+        {
+        }
+    }
+  void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("Coin"))
         {
             IncreaseAndSaveCoins();
             audioSource.Play();
             uiManager.UpdateCoinCountUI(coins);
             Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.CompareTag("Obstrical"))
-        {
         }
     }
     void IncreaseAndSaveCoins()
